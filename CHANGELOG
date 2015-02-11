@@ -1,0 +1,92 @@
+===============================================================================
+                                  CHANGELOG
+             WUMprep - Log file Preparation for Web Usage Mining
+-------------------------------------------------------------------------------
+$Revision: 1.6 $
+$Date: 2005/10/26 22:53:09 $
+===============================================================================
+
+0.11.1 (2005-10-27)
+ * UNTESTED!!!: Made conceptualize.pl accept ARFF input via STDIN (cpohle)
+
+ * Renamed mapReTaxonomies.pl into conceptualize.pl (cpohle)
+
+ * Made anonymize.pl accept ARFF input via STDIN (cpohle)
+
+ * Made sessionFilter.pl accept ARFF input via STDIN (cpohle)
+ 
+ * Made requestFilter.pl accept ARFF input via STDIN (cpohle)
+ 
+ * Renamed logFilter.pl to requestFilter.pl (cpohle)
+
+ * Renamed anonymizeLog.pl to anonymize.pl (cpohle)
+
+ * Made detectRobots.pl accept ARFF input via STDIN (cpohle)
+ 
+ * Made sessionize.pl accept ARFF input via STDIN (cpohle)
+ 
+ * Made dnsLookup.pl use src/wumprep.conf as default configuration file (cpohle)
+ 
+ * When run in filter mode, sessionize.pl joins the session_id and host_id only
+   if a sessionizeSeparator is defined in the config file, otherwise it pre-
+   pends a new, comma-separated field "session_id" to the output. (cpohle)
+   
+ * ArffParser.pm: Added method "appendAttribute" (cpohle)
+ 
+
+0.11.0 (2005-10-15)
+ * !!! NOTE: This release has only been tested to work with WUMprep4Weka. It
+             might well be that the changes break former functionality! (cpohle)
+
+ * Unified host_dns and host_name to host_dns in all files (inconsistent use
+   before) (cpohle)
+
+ * Adapted dnsLookup.pl to be able to use ArffParser (cpohle)
+
+ * Added WUMprep::ArffParser.pm as an alternative input parser for reading
+   and writing Weka ARFF files (cpohle)
+   
+ * Added wumPrep4WekaTest.pl for testing WUMprep4Weka (cpohle)
+   
+ * The constructor of Config.pm now takes an optional argument specifying
+   the full path to an user-specified WUMprep configuration file
+
+ * Added "vhost" as valid log field to LogfileParser.pm and logfileTemplate
+   (cpohle)
+   
+ * Replaced my real e-mail address by a spam-protecting circumscription (cpohle)
+
+0.10.0 (2005-08-20)
+
+
+ * Changed the wumprep.conf format due to the config editor GUI's
+   requirements:
+
+   - Distinguish between configuration sections (denoted by "[sectionLabel]")
+     and multi-value configuration settings (denoted by "setting =..." and the
+     values following in subsequent lines) (cpohle)
+
+   - "inputLogs" is now a multi-value setting in wumprep.conf instead of a
+     section label. (cpohle)
+
+   - Added and updated a number of comments for settings in wumprep.conf as
+     they are used as context help in the config editor GUI. (cpohle)
+
+
+0.9.2 (2003-10-23)
+
+ * Several bugs in detectRobots.pl fixed and switched to the
+   www.robotstxt.org robots database (cpohle)
+
+
+0.9.1 (2003-28-09)
+
+ * Fixed WUMprep::LogfileParser to parse log files independently
+   of being in DOS or UNIX format (testet on Linux only) (cpohle)
+
+ * Added missing anonymizerSettings section to the default
+   wumprep.conf file (cpohle)
+
+pre-0.9.1
+
+ * Initial release under "official" versioning (cpohle)

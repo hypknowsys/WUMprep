@@ -1,0 +1,11 @@
+Common
+picasso.wiwi.hu-berlin.de - - [10/Dec/1999:23:06:31 +0200] "GET /index.html HTTP/1.0" 200 3540
+
+Extended
+picasso.wiwi.hu-berlin.de - - [10/Dec/1999:23:06:31 +0200] "GET /index.html HTTP/1.0" 200 3540 "http://www.berlin.de/" "Mozilla/3.01 (Win95; I)"
+
+Cookie
+picasso.wiwi.hu-berlin.de - - [10/Dec/1999:23:06:31 +0200] "GET /index.html HTTP/1.0" 200 3540 "http://www.berlin.de/" "Mozilla/3.01 (Win95; I)" "VisitorID=10001; SessionID=20001"
+
+MS-IIS
+picasso.wiwi.hu-berlin.de, -, 10.12.99, 23:06:31, W3SVC2, WWW, 100.100.100.100, 547, 444, 0, 200, 0, GET, /index.html, -,

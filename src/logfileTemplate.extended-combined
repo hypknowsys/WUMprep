@@ -1,0 +1,60 @@
+# WUMprep4Weka - WUMprep for the WEKA data mining environment
+#
+# Sample logfile template in "common" format
+# See http://httpd.apache.org/docs/2.0/mod/mod_log_config.html for format
+# definitions.
+#
+# $Revision: 1.3 $
+#
+# Copyright (C) 2005 Carsten Pohle
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#
+
+# A log line may consist of the following fields:
+# @vhost@		- name of the virtual host receiving the http-request
+# @host_dns@   - host name (or IP address if it could not be resolved)
+# @host_ip@     - host IP address
+# @ident@       - ident code
+# @auth_user@   - user authentication code
+# @ts_day@      - timestamp of the request
+# @ts_month@
+# @ts_year@
+# @ts_hour@
+# @ts_minutes@
+# @ts_seconds@
+# @tz@          - time zone (e.g., +0200)
+# @method@      - request method (GET, PUT)
+# @path@        - path/URL of the requested document
+# @args@        - optional arguments (query), following the @path@ with
+#                 an '?' as delimiter (needs only to be specified in template
+#                 when stored in a separate field)
+# @protocol@    - protocol used for the request
+# @status@      - server response code
+# @sc_bytes@    - number of bytes sent by server to client
+# @cs_bytes@    - number of bytes received by server from client
+# @referrer@    - referrer information (URL)
+# @agent@       - user agent information
+# @time_taken@  - time required to process the request
+# @cookie@      - cookie string (may contain several somehow 
+#                 separated cookies)
+# @ignore@      - as the name says: ignored during processing
+# @ignore[1..10]- further ignored fields
+# @session_id@
+
+# The template definition is interpreted _literally_, so be careful
+# setting commas and blanks.
+
+@host_ip@ @ident@ @auth_user@ [@ts_day@/@ts_month@/@ts_year@:@ts_hour@:@ts_minutes@:@ts_seconds@ @tz@] "@method@ @path@ @protocol@" @status@ @sc_bytes@ "@referrer@" "@agent@"

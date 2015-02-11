@@ -1,0 +1,80 @@
+========================================================================
+   WUMprepConfigEditor - Java editor for WUMprep configuration files
+------------------------------------------------------------------------
+                          Author: Carsten Pohle
+                            Date: 20/08/2005
+                         Release: 0.1.0
+========================================================================
+Copyright (C) 2000-2005  Carsten Pohle (cp@cpohle.de)
+
+
+0. WUMprepConfigEditor README Outline
+=====================================
+
+0. This outline
+1. About
+2. Usage
+3. License Terms
+
+
+1. About
+========
+
+The WUMprepConfigEditor is a graphical, Java based editor for WUMprep
+configuration files. It presents the configuration options of the different
+WUMprep scripts conveniniently in a tabbed interface, with one tab per
+log file preparation task. The editor provides dynamic context help, explaining
+the configuration section or option that is currently selected.
+
+THE CURRENT RELEASE IS STILL CONSIDERED BETA, SO PLEASE BE CAUTIOS WHEN USING
+THE EDITOR! AT LEAST YOU SHOULD MAKE A BACKUP OF YOUR EXISTING CONFIURATION
+FILES BEFORE YOU EDIT AND OVERWRITE THEM WITH THIS EDITOR!
+
+The configuration editor is part of the WUMprep4Weka project, that aims at
+integrating WUMprep in the Weka collection of machine learning algorithms 
+for data mining tasks (see http://www.cs.waikato.ac.nz/~ml/weka/). In
+particular, WUMprep4Weka will allow to use Weka's "knowledge flow" GUI
+interface for defining a sequence of log file preparation steps in an 
+intuitive, graphical manner.
+
+Please check http://www.hypknowsys.org for the current state of WUMprep4Weka
+development. If you feel excited about the idea of an graphical tool for
+log file preparation, and if you would like to contribute, just contact
+cp@cpohle.de ;-). 
+
+
+2. Usage
+========
+
+The configuration editor requires a Java runtime environment (JRE) of 
+version 1.5.0 or later.
+
+Given you have correctly installed the JRE, you can launch the editor by
+issuing
+
+   java -jar [path/to/configEditor/]WUMprepConfigEditor.jar
+
+The editor starts with a fresh demo wumprep.conf configuration that you can
+modify according to your needs. Alternatively, you can load your existing
+wumprep.conf using the File->Open... command.
+
+When ready, save the configuration using File->Save and then run the WUMprep
+scripts as required.
+
+
+3. License Terms
+================
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+ *
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA

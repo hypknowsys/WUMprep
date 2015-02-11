@@ -1,0 +1,4 @@
+[Sample-RegExp-Def]
+
+HOME    www\.hhl\.de\/$
+BANNER	\/images\/banner\/

@@ -1,0 +1,349 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Language" content="en">
+<title>Statistics for logfile <!-- TMPL_VAR NAME=LOG_NAME --></title>
+<link rel="stylesheet" type="text/css" href="WumReport.css">
+</head>
+
+<body bgcolor="#FFFFCC" text="#000000">
+
+<a name="TOP">
+<table border="0" align="center" cellspacing="0" cellpadding="5" width="95%">
+  <tr>
+    <td valign="top" align="center" colspan="2">
+      <h1>Logfile Statistics for <!-- TMPL_VAR NAME=LOG_NAME --></h1>
+      <h2>Contents</h2>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" valign="top" align="left">
+      <ul>
+      <li> <p><a href="#LogfileSummary">Logfile Summary</a> </p> </li>
+      <li> <p><a href="#SessionSummary">Session Summary</a> </p> </li>
+      <li> <p><a href="#PageStatisticsByUrl">Page Statistics by URL</a> </p> </li>
+      <li> <p><a href="#PageStatisticsByAccess">Page Statistics by Accesses</a> </p> </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+</center>
+
+
+<h2 align="center">
+<a name="LogfileSummary">Logfile Summary</a>
+</h2>
+
+<table border="0" align="center" cellspacing="0" cellpadding="5" width="95%">
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableHeading">
+      No.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableHeading">
+      Attribute
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableHeading">
+      &nbsp;
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableHeading">
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOn">
+      1.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOn">
+      Number of requests
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      <!-- TMPL_VAR NAME=RECORD_COUNT -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOff">
+      2.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOff">
+      Number of sessions
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      <!-- TMPL_VAR NAME=SESSION_COUNT -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOn">
+      3.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOn">
+      Average page view time
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      <!-- TMPL_VAR NAME=AVG_VIEW_TIME -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      seconds
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOff">
+      4.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOff">
+      Page view time standard deviation
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      <!-- TMPL_VAR NAME=PAGE_VIEW_TIME_STDDEV -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      seconds
+    </td>
+  </tr>
+</table>
+<p align="center"><small><a href="#TOP">Top of the Page</a></small></p>
+
+<h2 align="center">
+<a name="SessionSummary">Session Summary</a>
+</h2>
+
+<table border="0" align="center" cellspacing="0" cellpadding="5" width="95%">
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableHeading">
+      No.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableHeading">
+      Attribute
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableHeading">
+      &nbsp;
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableHeading">
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOn">
+      1.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOn">
+      Average session length
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      <!-- TMPL_VAR NAME=AVG_SESSION_LENGTH -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      accesses
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOff">
+      2.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOff">
+      Session length standard deviation
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      <!-- TMPL_VAR NAME=STDDEV_SESSION_LENGTH -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      seconds
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOn">
+      3.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOn">
+      Average session duration
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      <!-- TMPL_VAR NAME=AVG_SESSION_DURATION -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOn">
+      seconds
+    </td>
+  </tr>
+  <tr>
+    <td nowrap width="5%" valign="top" align="right" class="TableDataOff">
+      4.
+    </td>
+    <td nowrap width="65%" valign="top" align="left" class="TableDataOff">
+      Session duration standard deviation
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      <!-- TMPL_VAR NAME=STDDEV_SESSION_DURATION -->
+    </td>
+    <td nowrap width="15%" valign="top" align="right" class="TableDataOff">
+      seconds
+    </td>
+  </tr>
+</table>
+<p align="center"><small><a href="#TOP">Top of the Page</a></small></p>
+
+<h2 align="center">
+<a name="PageStatisticsByUrl">Page Statistics by URL</a>
+</h2>
+
+<table border="0" align="center" cellspacing="0" cellpadding="5" width="95%">
+  <tr>
+    <td nowrap width="40%" valign="top" align="leftt" class="TableHeading">
+      URL
+    </td>
+    <td nowrap width="10%" valign="top" align="left" class="TableHeading">
+      Accesses
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      min. PVT
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      max. PVT
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      avg. PVT
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      PVT stddev.
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      In % of sessions
+    </td>
+  </tr>
+
+  <!-- TMPL_LOOP NAME=PAGE_STATISTICS_BY_URL -->
+  <tr>
+    <td nowrap width="40%" valign="top" align="left"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <a href=<!-- TMPL_VAR NAME=GIF -->><!-- TMPL_VAR NAME=PATH --></a>
+    </td>
+    <td nowrap width="10%" valign="top" align="left"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=REQUEST_COUNT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=MIN_PVT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=MAX_PVT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=AVG_PVT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=PVT_STDDEV -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=PERCENT_SESSIONS -->
+    </td>
+  </tr>
+  <!-- /TMPL_LOOP -->
+</table>
+<p align="left"><small>(PVT = Page View Time)</small></p>
+<p align="center"><small><a href="#TOP">Top of the Page</a></small></p>
+
+<h2 align="center">
+<a name="PageStatisticsByAccess">Page Statistics by Accesses</a>
+</h2>
+
+<table border="0" align="center" cellspacing="0" cellpadding="5" width="95%">
+  <tr>
+    <td nowrap width="40%" valign="top" align="leftt" class="TableHeading">
+      URL
+    </td>
+    <td nowrap width="10%" valign="top" align="left" class="TableHeading">
+      Accesses
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      min. PVT
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      max. PVT
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      avg. PVT
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      PVT stddev.
+    </td>
+    <td nowrap width="10%" valign="top" align="right" class="TableHeading">
+      In % of sessions
+    </td>
+  </tr>
+
+  <!-- TMPL_LOOP NAME=PAGE_STATISTICS_BY_ACCESSES -->
+  <tr>
+    <td nowrap width="40%" valign="top" align="left"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <a href=<!-- TMPL_VAR NAME=GIF -->><!-- TMPL_VAR NAME=PATH --></a>
+    </td>
+    <td nowrap width="10%" valign="top" align="left"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=REQUEST_COUNT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=MIN_PVT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=MAX_PVT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=AVG_PVT -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=PVT_STDDEV -->
+    </td>
+    <td nowrap width="10%" valign="top" align="right"
+      <!-- TMPL_IF NAME=ODD_LINE -->class="TableDataOn"
+      <!-- TMPL_ELSE -->class="TableDataOff"<!-- /TMPL_IF -->>
+      <!-- TMPL_VAR NAME=PERCENT_SESSIONS -->
+    </td>
+  </tr>
+  <!-- /TMPL_LOOP -->
+</table>
+<p align="left"><small>(PVT = Page View Time)</small></p>
+<p align="center"><small><a href="#TOP">Top of the Page</a></small></p>
+
+<p> &nbsp; </p>
+<p align="center">
+Report created by WUMprep, the <a href="http://wum.wiwi.hu-berlin.de/">Web
+Utilization Miner WUM</a> data preparation module.
+<br>
+<a href="http://www.wiwi.hu-berlin.de/iwi/">Institute of Information Systems</a> - 
+<a href="http://www.hu-berlin.de/">Humboldt-University Berlin, Germany</a>.
+</p>
+
+</body>
+
+</html>
+

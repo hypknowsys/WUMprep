@@ -1,0 +1,19 @@
+0.11.0 (2005-10-15)
+
+ *  This release of WUMprep has been partly rewritten in order to work with
+    WUMprep4Weka, a plugin for the Java based Weka data mining environment.
+    
+    This release has not been tested for backwards compatibility with previous
+    versions. It is considered being an development alpha-release, as further
+    changes are necessary for full Weka integration.
+
+0.10.0 (2005-08-20)
+
+ * The format of the WUMprep configuration file WUMprep (wumprep.conf) has 
+   changed sligtly from the previous release. Please update any existing
+   configuration files you would like to use with this release according to 
+   the default / example wumprep.conf in /src.
+  
+ * WUMprep now comes with a Java based graphical configuration editor. See
+   the README for details.
+  

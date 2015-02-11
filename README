@@ -1,0 +1,197 @@
+========================================================================
+     WUMprep - Log file Preparation for Web Usage Mining - README
+------------------------------------------------------------------------
+                          Author: Carsten Pohle
+                            Date: 15/10/2005
+                         Release: 0.11.0
+                       $Revision: 1.5 $
+========================================================================
+Copyright (C) 2000-2005  Carsten Pohle (cp AT cpohle de)
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+
+WARNING
+========
+
+THIS RELEASE IS CONSIDERED AN ALPHA-DEVELOPMENT VERSION!
+READ THE NEWS FOR FURTHER DETAILS!
+
+Introduction
+=============
+
+This is the README document for the WUMprep Perl scripts. They are
+intended to be used for data preparation tasks in conjunction with the Web
+Usage Mining software WUM.
+
+
+News / Upgrading
+=================
+
+Please check the file NEWS for instructions that might be relevant to you
+if you are upgrading from a previous version of WUMprep.
+
+
+General usage
+==============
+
+Most of the configuration options necessary for applying the WUMprep
+scripts to logfile data are defined in a file called 'wumprep.conf'. This
+file should be stored in the directory containing the data to process,
+which should also be the working directory when running the tools. A sample
+configuration file is included in the script directory, see this file for
+further documentation.
+
+In order to process a log file, you must provide a template file describing
+the format of the log file. See the sample 'logfileTemplate' file in the
+script directory for details.
+
+
+Java-based coniguration editor
+===============================
+
+WUMprep comes with a small Java application for editing the WUMprep 
+configuration file 'wumprep.conf' in a more convenient way. You can find
+the config editor in the configEditor subdirectory of the distribution. See
+the README in the same directory for usage instructions.
+
+The configuration editor is part of the WUMprep4Weka project, that aims at
+integrating WUMprep in the Weka collection of machine learning algorithms 
+for data mining tasks (see http://www.cs.waikato.ac.nz/~ml/weka/). In
+particular, WUMprep4Weka will allow to use Weka's "knowledge flow" GUI
+interface for defining a sequence of log file preparation steps in an 
+intuitive, graphical manner.
+
+Please check http://www.hypknowsys.org for the current state of WUMprep4Weka
+development. If you feel excited about the idea of an graphical tool for
+log file preparation, and if you would like to contribute, just contact
+cp@cpohle.de ;-).
+
+
+Tools overview
+===============
+
+Before using any of the WUMprep scripts, BE SURE TO READ EACH SCRIPT'S
+DOCUMENTATION!!! For many scripts, documentation is provided as POD
+inline documentation, which can be viewed easily using the 'perldoc'
+command. If there is no inline documentation for a script, please
+refer to the source code's comments or the usage information printed
+by some of the scripts when called with the '--help' option or without
+any command line arguments.
+
+Following is a list of the files comprising the Perl parts of the
+WUMprep modules of the WUM architecture (in alphabetical order):
+
+
+Perl scripts and modules:
+--------------------------
+
+anonymizeLog.pl     Remove host identifiers from log files and replace
+                    them by anonymous numeric IDs
+
+countRequests.pl    Counts the number of requests for each document occurring
+                    in a logfile - just a little utility
+
+detectRobots.pl     Identify requests stemming from robots. Tags the records
+                    accordingly in the WUMwarehouse if in warehouse mode. If
+                    run in file mode, the log entries caused by robots are
+                    removed from the output and stored in a separate file.
+
+dnsLookup.pl        Perform (reverse) hostname lookups. Invoke with
+                    --help for a list of command line options.
+                    ATTENTION: Performs reverse lookups by default (IP
+                    to hostname). The logfile template MUST contain an
+                    @host_ip@ field!
+
+logFilter.pl        Remove irrelevant logfile records like requests of images or
+                    stylesheets. Also to be used for removing duplicated
+                    requests.
+
+logStatistics.pl    Calculate descriptive statistics from a logfile
+
+mapReTaxonomies.pl  Regular expression-based conceptual scaling for
+                    flat log files
+
+mapTaxonomies.pl    Conceptual scaling for flat log files, DEPRECATED
+
+mergeSessions.pl    Insert requests from another logfile into an already
+                    sesionized one.
+
+removeRobots.pl     Predecessor of 'detectRobots.pl', kept for reference
+                    purposes - DEPRECATED
+
+removeSessionTails.pl  A little utility that gets the first request of
+                    eatch session
+
+sessionFilter.pl    Performs filtering of log lines on session based
+                    constraints.
+
+sessionize.pl       Identify user sessions
+
+transformLog.pl     Transform a log file into another format. The script
+                    can transform a log file both into another sequential
+                    format specified in a user-defined template, and
+                    into a vector format with one record per session and
+                    all possible instantiations of "path" as dimensions.
+                  
+WUMprep.pm          Provides helper functions for the WUMprep scripts
+
+WUMprep::Config.pm  Encapsulates the wumprep.conf file; used by the 
+                    other scripts to read configuration options
+
+WUMwarehouse.pm     Provides an API for accessing the WUM data warehouse
+
+WUMwarehosue::Config.pm  Encapsulates the wumwarehouse.conf file
+
+
+Other files:
+-------------
+configEditor/*	    Graphical WUMprep configuration editor (see above).
+
+doc/*               Documentation files (at least a first impression of what
+                    might come in the future ;-))
+
+html/*              Files used by the report mechanism of the
+                    logStatistics.pl script
+
+src/indexers.lst    Robot database used by the detectRobots.pl and
+                    removeRobots.pl scripts
+
+src/logfileTemplate A sample logfile format definition template
+
+src/logfileTemplate.csv Example template file for transformLog.pl, intended
+                    for converting a log file into a comma separated
+                    format which can easily be imported into third-party tools.
+
+src/wumprep.conf    Example configuration file for the WUMprep scripts
+
+
+License Terms
+==============
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+

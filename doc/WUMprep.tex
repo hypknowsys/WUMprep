@@ -1,0 +1,176 @@
+\documentclass[a4paper]{article}
+
+\begin{document}
+\title{WUMprep \\  
+  Logfile Preparation for Data Mining with WUM}
+\author{Carsten Pohle}
+\maketitle
+
+\textsl{Copyright (c) 2000-2003 Carsten Pohle (cp@cpohle.de).
+Permission is granted to copy, distribute and/or modify this document under
+the terms of the GNU Free Documentation License, Version 1.2 or any later
+version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License".
+}
+
+\begin{abstract}
+  This document describes the process of preparing Web server logfiles for
+  dataming using the miner \texttt{WUM}. It is also the main documentation
+  for the \texttt{WUMprep} suite of Perl scripts used for this purpose.
+
+\textbf{This document is slighly out of date. Use it with care ;-)}
+\end{abstract}
+
+\section{Introduction}
+
+\texttt{WUMprep} is a collection of Perl scripts supporting data preparation
+for data mining Web server logfiles. It's primary purpose is to be used in
+conjunction with the Web usage miner \texttt{WUM}, but \texttt{WUMprep} might
+also be used standalone or in conjunction with other tools for Web log
+analysis. This document is intended to give an overview of data preparation
+using the \texttt{WUMprep} tools.
+
+Prototypically, preparing Web server log files for mining with \texttt{WUM}
+requires the following steps:
+
+\begin{enumerate}
+\item Conversion of the logfile into the ``extended cookie'' format
+\item Removal of irrelevant requests
+\item Removal of duplicate requests
+\item \textit{Optional:} Try to resolve host IP addresses into hostnames
+\item Definition of sessions
+\item Removal of robot requests
+\item Application specific data preparation
+\end{enumerate}
+
+Each of these steps is supported by certain Perl scripts, each of them having
+its own inline-documentation, explaining the usage and the underlying
+algorithms in greater detail. It can be accessed by invoking the command
+\texttt{perldoc script.pl} on the command line, where script.pl is replaced
+with the Perl scrip's filename. (Please note that you have to specify the
+script's complete path if the script directory is not contained in the
+\texttt{PATH} environment variable.)
+
+All options and parameters for the \texttt{WUMprep} scripts are stored in a
+file called \texttt{wumprep.conf}. A template of this file is included in the
+directory containing the \texttt{WUMprep} Perl scripts. This template is well
+documented and should be self-explaining. The configuration file is expected
+to reside in the directory containing the logfiles to be processed.
+
+\subsection{Logfile conversion}
+
+\textbf{DEPRECATED! REWRITE THIS SECTION!}
+
+Virtually every Web server writes logfiles of the received requests and
+answers. Depending on the used server software, the records of these
+logfiles may contain different kinds and numbers of fields.
+
+To keep the \texttt{WUMprep} scripts simple, they have been designed to
+support only one of the several logfile formats, referred to as the
+``extended cookie format''. A sample log line is presented in
+Figure~\ref{fig:logLineSample}.
+
+The ``extended cookie format'' serves as a generic format most logfiles can
+be converted into. In the \texttt{WUMprep} suite, the script
+\texttt{logConv.pl} does the logfile conversion. See the script
+documentation for details about the supported source log formats.
+
+\begin{figure}[htbp]
+  \begin{center}
+    \texttt{\parbox{\textwidth}{picasso.wiwi.hu-berlin.de - -
+        [10/Dec/1999:23:06:31 +0200] "GET /index.html HTTP/1.0" 200 3540
+        "http://www.berlin.de/" "Mozilla/3.01 (Win95; I)" "VisitorID=10001;
+        SessionID=20001"}}
+    \caption{Sample ``extended cookie format'' log line}
+    \label{fig:logLineSample}
+  \end{center}
+\end{figure}
+
+
+\subsection{Removing irrelevant requests}
+\label{sec:removeIrrelevantRequests}
+
+The idea behind the \texttt{WUM} mining model is to analyze usage patterns.
+For this purpose, we are interested in information about the paths visitors
+take when traversing a Web site, as is included in Web server logfiles.
+These logfiles not only contain requests to the pages comprising the Web
+site, but also requests of images, scripts etc. embedded in these pages.
+These ``secondary'' requests are not needed for the analysis and thus
+irrelevant -- they must be removed from the logs before mining.
+
+The script \texttt{logFilter.pl} is designed to perform this task of data
+cleaning.
+
+
+\subsection{Removing duplicate requests}
+\label{sec:removeDuplicateRequests}
+
+If a network connection is slow or a server's respond time is low, a
+visitor might issue several successive clicks on the same link before the
+requested page is finally showed in his browser. Those duplicate requestes
+are noise in the date and should be removed.
+
+This is the script's \texttt{logFilter.pl} second job. It detects such
+duplicates in the log and drops all but the first occurences.
+
+
+\subsection{Resolving host IP addresses}
+\label{sec:resolvIpAddresses}
+
+Depending on the Web server configuration, either a host's IP address or
+its hostname is logged. For data preparation purposes, knowing the
+hostnames has some advantages about working with IP addresses. For example,
+many proxy servers of major internet service providers identify themselfes
+as proxies in their hostnames. Those log entries could be removed to
+improve the accuracy of the data mining results when user identification
+relies on hostnames.
+
+Most IP addresses can be resolved to hostnames with appropriate DNS
+queries. This job is done by the script \texttt{reverseLookup.pl}.
+
+
+\subsection{Definition of sessions}
+\label{sec:defineSessions}
+
+For further data preparation and data mining tasks, it is neccessary to
+divide logfiles into user sessions. A session is a contiguous series of
+requests from a single host. Multiple sessions of the same host can be
+divided by measuring a maximal page view time for a single page, using a
+user/session identifcation cookie or defining one or more pages as
+``session-starters''.
+
+In the \texttt{WUMprep} suite, \texttt{sessionize.pl} is the script that
+supports this task. It prefixes each host field in the log with a session
+identifyer. For details about the criteria used for session identification,
+please resort to the script's inline documentation.
+
+
+\subsection{Removing robot requests}
+\label{sec:removeRobots}
+
+On many Websites, a significant fraction of the requests stem from robots,
+indexers, spiders or agents. Since these requests are generated
+automatically, their traces in the logfile do not represent human browsing
+behaviour and thus adulterate mining results.
+
+To distinguish between human users and hosts that are robots, there exist
+several heuristics. They are implemented in the script
+\texttt{removeRobots.pl} and desribed in the script's inline documentation.
+
+
+\subsection{Further data preparation steps}
+\label{sec:furtherSteps}
+
+The data preparation steps described so far can be viewed as ``generic''
+ones, applying to most Web usage mining tasks. Now, any irrelevant or
+disturbing data have been removed and the logs are divided into single user
+sessions.
+
+What follows now is application specific data preparation, for which no
+generic algorithms are provided by \texttt{WUMprep}.
+
+\end{document}
+
+
